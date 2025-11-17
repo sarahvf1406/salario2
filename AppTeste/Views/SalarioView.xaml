@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AppTeste.ViewModels"
+             x:Class="AppTeste.Views.SalarioView"
+             Title="Calculadora de Salário">
+
+    <ContentPage.BindingContext>
+        <vm:SalarioViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Margin="20">
+            <Label Text="Calculadora de Salário" FontSize="Large" FontAttributes="Bold" Margin="0,0,0,10"/>
+
+            <HorizontalStackLayout Spacing="10" Margin="0,0,0,10">
+                <Label Text="Valor Hora:" VerticalOptions="Center" WidthRequest="130"/>
+                <Entry Placeholder="0.00"
+                       Keyboard="Numeric"
+                       WidthRequest="140"
+                       Text="{Binding ValorHoraString, Mode=TwoWay}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="10" Margin="0,0,0,10">
+                <Label Text="Horas Trabalhadas:" VerticalOptions="Center" WidthRequest="130"/>
+                <Entry Placeholder="0"
+                       Keyboard="Numeric"
+                       WidthRequest="140"
+                       Text="{Binding HorasTrabalhadasString, Mode=TwoWay}" />
+            </HorizontalStackLayout>
+
+            <Button Text="Calcular" HorizontalOptions="Start"
+                    Command="{Binding CalcularSalarioCommand}"
+                    WidthRequest="150" Margin="0,10,0,10"/>
+
+            <Label Margin="0,10,0,0"
+                   FontAttributes="Bold" FontSize="Medium"
+                   Text="{Binding SalarioCalculado, StringFormat='Salário: {0:C}'}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

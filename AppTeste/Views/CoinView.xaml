@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTeste.Views.CoinView"
+             Title="CoinView">
+    <ScrollView>
+        <VerticalStackLayout 
+            Padding="30"
+            Spacing="25">
+
+            <Image x:Name="CoinImage"
+                   WidthRequest="100"
+                   Source="logojogo.png" />
+
+            <Picker Title="-- Selecione Cara ou Coroa --" 
+                    SelectedItem="{Binding LadoEscolhido}">
+                <Picker.Items>
+                    <x:String>Cara</x:String>
+                    <x:String>Coroa</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button x:Name="CoinFlipButton" 
+        Text="Girar a moeda" 
+        Command="{Binding FlipCommand}" />
+
+
+            <Button x:Name="ReiniciarButton"
+                    Command="{Binding ReiniciarCommand}"
+                    Text="Reiniciar Jogo"
+                    BackgroundColor="LightCoral"
+                    TextColor="White" />
+
+            <!-- Estatísticas -->
+            <Label Text="Estatísticas:" 
+                   FontAttributes="Bold"
+                   FontSize="18" />
+
+            <Label Text="{Binding Tentativas, StringFormat='Tentativas: {0}'}" />
+            <Label Text="{Binding Acertos, StringFormat='Acertos: {0}'}" />
+            <Label Text="{Binding Perdas, StringFormat='Perdas: {0}'}" />
+
+            <Label x:Name="ResultaLabel" 
+                   Text="{Binding Resultado}" />
+
+            <Image x:Name="CoinResult" 
+                   WidthRequest="100"
+                   Source="{Binding Imagem}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
